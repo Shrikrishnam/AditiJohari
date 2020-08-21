@@ -1,0 +1,137 @@
+<div class="container container-fluid ">
+    <div class="row" *ngIf="status"> 
+    <div class="panel panel-primary" >
+        <div class="panel-heading font-weight-bolder h3 text-center">
+            Update Appointment 
+        </div>
+        <div class="panel-body">
+            <form class="form-group" (submit)="updateApp()">
+                <div >
+                    <label for="firstname">FIRST NAME</label>
+                    <input type="text" name="firstname" [value]="updateForm.firstname" placeholder="Firstname"
+                    (keyup)="updateForm.firstname=$event.target.value" class="form-control"/>
+                </div>
+                <div>
+                    <label for="lastname">LAST NAME</label>
+                    <input type="text" name="lastname" [value]="updateForm.lastname" placeholder="Lastname"
+                    (keyup)="updateForm.lastname=$event.target.value"   class="form-control"/>
+                </div>
+                <div>
+                    <label for="emailid">EMAIL</label>
+                    <input type="email" name="email" [value]="updateForm.email" placeholder="Email"
+                    (keyup)="updateForm.email=$event.target.value"   class="form-control"/>
+                </div>
+                <div>
+                    <label for="age">AGE</label>
+                    <input type="number" name="age" [value]="updateForm.age" placeholder="Age"
+                    (keyup)="updateForm.age=$event.target.value"  class="form-control"/>
+                </div>
+                <div>
+                    <label for="streetaddress">STREET ADDRESS</label>
+                    <textarea name="streetaddress" [value]="updateForm.streetaddress" placeholder="Street"
+                    (keyup)="updateForm.streetaddress=$event.target.value"   class="form-control"  rows="3" cols="2"></textarea>
+                </div>
+                <div>
+                    <label for="city">CITY</label>
+                    <input type="text" id="city"  [value]="updateForm.city" placeholder="City"
+                    (keyup)="updateForm.city=$event.target.value"class="form-control" rows="3" cols="2"/>
+                </div>
+                <div>
+                    <label for="state">STATE</label>
+                    <input type="text" id="state"  [value]="updateForm.state" placeholder="State"
+                    (keyup)="updateForm.state=$event.target.value" class="form-control"  rows="3" cols="2"/>
+                </div>
+                <div>
+                    <label for="country">COUNTRY</label>
+                    <input type="text" id="country" [value]="updateForm.country" placeholder="Country" 
+                    (keyup)="updateForm.country=$event.target.value" class="form-control"  rows="3" cols="2"/>
+                </div>
+                <div>
+                    <label for="pincode">PINCODE</label>
+                    <input type="number" name="pincode" [value]="updateForm.pincode" placeholder="Pincode"
+                    (keyup)="updateForm.pincode=$event.target.value"  class="form-control"/>
+                </div>
+                <div>
+                    <label for="phonenumber">PHONE NUMBER</label>
+                    <input type="number" name="phonenumber" [value]="updateForm.phonenumber" placeholder="Phone Number"
+                    (keyup)="updateForm.phonenumber=$event.target.value"  class="form-control"/>
+                </div>
+                <div>
+                    <label for="trainerpreference">TRAINER PREFERENCE</label>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="tpref">
+                            <input type="radio" value="Male trainer" class="form-check-input" id="pref1"
+                            name="trainerpreference"    [value]="updateForm.trainerpreference" 
+                            (keyup)="updateForm.trainerpreference=$event.target.value" >
+                            Male trainer
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="trainerpreference">
+                            <input type="radio" value="Female trainer" class="form-check-input" id="pref2"   
+                            [value]="updateForm.trainerpreference" (keyup)="updateForm.trainerpreference=$event.target.value"  name="trainerpreference">
+                            Female trainer
+                        </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label" for="trainerpreference">
+                            <input type="radio" value="Any" class="form-check-input" id="pref3" 
+                            [value]="updateForm.trainerpreference"  (keyup)="updateForm.trainerpreference=$event.target.value" name="trainerpreference">
+                            Any
+                        </label>
+                    </div>
+                </div>
+                <div>
+                    <label for="packages" class="col-form-label">PACKAGE</label>
+                    <div class="col-sm-8">
+                      <select [value]="updateForm.packages" (change)="updateForm.packages=$event.target.value">
+                        <option value="">--SELECT--</option>
+                        <option value="Monthly-3000 INR">Monthly-3000 INR</option>
+                        <option value="Yearly-30,000 INR">Yearly-30,000 INR</option>
+                        <option value="4 months-10,500 INR">4 months-10,500 INR</option>
+                      </select>
+                    </div>
+                </div>
+                <div *ngIf="success" class="alert alert-warning">
+                    <strong class="text-success">Data updated successfully!</strong> 
+                </div>
+                <input type="submit" value="Update Appointment" 
+                class="btn btn-success btn-block font-weight-bold"/>
+                <button (click)="cancelUpdate()" class="btn btn-danger btn-block font-weight-bold">
+                    Cancel Update
+                </button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+        <table class="table table-striped table-responsive">
+            <thead class="thead">
+                <tr>
+                    <th class="h1">Sl NO</th>
+                    <th class="h2">Name</th>
+                    <th class="h3">Address</th>
+                    <th class="h4">City</th>
+                    <th class="h6">Trainer Preference</th>
+                    <th class="h5">Package</th>
+                    <th class="h7">Phone</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of allApp;let i=index">
+                    <td scope="col">{{i+1}}</td>
+                    <td scope="col">{{data.firstname}} {{data.lastname}}</td>
+                    <td scope="col">{{data.streetaddress}}{{"-" + data.pincode}}</td>
+                    <td scope="col">{{data.city}}</td>
+                    <td scope="col">{{data.trainerpreference}}</td>
+                    <td scope="col">{{data.packages}}</td>
+                    <td scope="col">{{data.phonenumber}}</td>
+                    <div>
+                        <td><button (click)="editFitness(data)" class="btn btn-warning font-weight-bold">Edit</button></td>
+                        <td><button (click)="deleteFitness(data)" class="btn btn-danger font-weight-bold">Delete</button></td>
+                   </div>
+                </tr>
+            </tbody>
+        </table>
+    </div>   
+</div>

@@ -1,0 +1,65 @@
+<div class="container-fluid bg-info">
+  <div class="row">
+    <div class="col col-md-12">
+      <div class="logo">
+        <img src="https://i.pinimg.com/736x/fd/e7/3d/fde73d9cde724c725d5ec918755cb0db.jpg"
+         width="100px" height="100px" />
+      </div>
+      <div class="h1 text-warning font-weight-bolder">
+        FITNESS TRACKER APPLICATION
+      </div>
+    </div>
+  </div>
+  <div class="row bg-dark">
+    <div class="col col-md-12">
+      <nav class="navbar navbar-expand-md">
+        <ul class="navbar-nav mr-auto ">
+          <li class="nav-item">
+            <button class="btn btn-dark font-weight-bold" (click)="landingPage()">
+               Home
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-dark font-weight-bold" (click)="placeAppointment()" >
+               Place Appointment
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-dark font-weight-bold" (click)="viewAppointment()">
+               View Appointment
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-dark font-weight-bold"(click)="contactUspage()">
+              Contact Us
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col col-md-3 bg-dark">
+      <div class="sidebar ">
+        <div class="nav navbar-nav">
+          <button  class="btn btn-dark font-weight-bold my-2 my-md-4" (click)="landingPage()">
+            Home
+          </button>
+          <button class="btn btn-dark font-weight-bold my-2 my-md-4" (click)="placeAppointment()">
+            Place Appointment
+          </button>
+          <button class="btn btn-dark font-weight-bold my-2 my-md-4" (click)="viewAppointment()">
+            View Appointment
+          </button>
+          <button class="btn btn-dark font-weight-bold my-2 my-md-4" (click)="contactUspage()">
+            Contact Us
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="col col-md-9">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+  
